@@ -583,8 +583,8 @@ defmodule Phoenix.LiveView.Channel do
     load_csrf_token(endpoint, socket_session)
 
     # Optional parameter handling
-    url = params["url"]
     connect_params = params["params"]
+    url = connect_params["url"] || params["url"]
 
     case params do
       %{"caller" => {pid, _}} when is_pid(pid) -> Process.put(:"$callers", [pid])
